@@ -60,7 +60,7 @@ class App extends React.Component {
                     <label htmlFor="questionTitle"></label>
                     <button id="questionTitle" type="submit" value={this.state.questionTitle} onChange={this.handleChange}>Get Question</button>
                 </form>
-                <h2>{this.state.searchUrl}</h2>
+                {/* <h2>{this.state.searchUrl}</h2> */}
                 {this.state.question &&
                     <div>
                         <h1>
@@ -72,11 +72,12 @@ class App extends React.Component {
                         <h1>
                             Question: {this.state.question[0].question}
                         </h1>
+                        <button onClick={this.showAnswer}>
+                            See the answer
+                        </button>
                     </div>
                 }
-                <button onClick={this.showAnswer}>
-                        See the answer
-                </button>
+                
                 {this.state.showAnswer &&
                 <div>
                     <h1>
