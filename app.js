@@ -13,7 +13,14 @@ class App extends React.Component {
         questionTitle: 'question',
         baseURL: "http://jservice.io/api/random",
         searchUrl: "",
-        query: "&t="
+        showAnswer: false
+
+    }
+
+    showAnswer = (event) => {
+        this.setState({
+            showAnswer:true
+        })
     }
 
     handleChange = (event) => {
@@ -44,26 +51,33 @@ class App extends React.Component {
         return(
             <div>
                 <form onSubmit={this.handleSubmit}>
-                    <label htmlFor="questionTitle">Question</label>
+                    <label htmlFor="questionTitle"></label>
                     <button id="questionTitle" type="submit" value={this.state.questionTitle} onChange={this.handleChange}>Get Question</button>
                 </form>
                 <h2>{this.state.searchUrl}</h2>
                 {this.state.question &&
                     <div>
                         <h1>
-                            {this.state.question[0].category.title}
+                            Category: {this.state.question[0].category.title}
                         </h1>
                         <h1>
-                            {this.state.question[0].value}
+                            Points: {this.state.question[0].value}
                         </h1>
                         <h1>
-                            {this.state.question[0].question}
+                            Question: {this.state.question[0].question}
                         </h1>
                     </div>
-                    <button>
-                        See the answer
-                    </button>
                 }
+                {this.state.showAnswer &&
+                <div>
+                    <h1>
+                        {this.state.question[0].answer}
+                    </h1>
+                </div>
+                }
+                <button onClick={this.showAnswer}>
+                        See the answer
+                </button>
             </div>
         )
     }
