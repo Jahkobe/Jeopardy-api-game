@@ -18,9 +18,15 @@ class App extends React.Component {
     }
 
     showAnswer = (event) => {
+        if(this.state.showAnswer){
+        this.setState({
+            showAnswer:false
+        })
+        }else{
         this.setState({
             showAnswer:true
-        })
+        })    
+        }
     }
 
     handleChange = (event) => {
@@ -68,6 +74,9 @@ class App extends React.Component {
                         </h1>
                     </div>
                 }
+                <button onClick={this.showAnswer}>
+                        See the answer
+                </button>
                 {this.state.showAnswer &&
                 <div>
                     <h1>
@@ -75,9 +84,7 @@ class App extends React.Component {
                     </h1>
                 </div>
                 }
-                <button onClick={this.showAnswer}>
-                        See the answer
-                </button>
+                
             </div>
         )
     }
